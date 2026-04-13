@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 import java.util.function.Function;
 
 public class ModItems {
-    public static final Item SUSPICIOUS_SUBSTANCE = register("suspicious_substance", Item::new, new Item.Properties());
+    public static final Item BLOCK_O_CHEESE = register("block_o_cheese", Item::new, new Item.Properties());
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         // Create the item key.
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(CheeseBlock.MOD_ID, name));
@@ -30,7 +30,7 @@ public class ModItems {
         // Get the event for modifying entries in the ingredients group.
 // And register an event handler that adds our suspicious item to the ingredients group.
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
-                .register((creativeTab) -> creativeTab.accept(ModItems.SUSPICIOUS_SUBSTANCE));
+                .register((creativeTab) -> creativeTab.accept(ModItems.BLOCK_O_CHEESE));
     }
 
 }
