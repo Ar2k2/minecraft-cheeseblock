@@ -1,7 +1,4 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "cheeseblock:item/block_o_cheese"
-  }
+  "parent": "cheeseblock:block/block_o_cheese"
 }
 
