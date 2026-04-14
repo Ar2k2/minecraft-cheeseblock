@@ -32,4 +32,3 @@ public class ModBlocks {
         // Calling this method forces the static fields to initialise and register the block
     }
 }
-

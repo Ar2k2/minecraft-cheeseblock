@@ -11,10 +11,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.food.FoodProperties;
 
 import java.util.function.Function;
 
 public class ModItems {
+    public static final Item CHEESE_SLICE = register("cheese_slice", Item::new,
+            new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(3)
+                    .saturationModifier(0.6f)
+                    .build()));
     public static final Item BLOCK_O_CHEESE = register("block_o_cheese",
             props -> new BlockItem(ModBlocks.BLOCK_O_CHEESE, props),
             new Item.Properties());
@@ -31,8 +37,8 @@ public class ModItems {
         return item;
     }
     public static void initialize() {
-        // Get the event for modifying entries in the ingredients group.
-// And register an event handler that adds our suspicious item to the ingredients group.
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS)
+                .register((creativeTab) -> creativeTab.accept(ModItems.CHEESE_SLICE));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS)
                 .register((creativeTab) -> creativeTab.accept(ModItems.BLOCK_O_CHEESE));
     }
